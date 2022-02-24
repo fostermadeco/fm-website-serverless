@@ -18,7 +18,7 @@ module.exports.requestUploadURL = async (event, context, callback) => {
   callback(null, {
     statusCode: 200,
     headers: {
-      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Origin': 'https://happy-joliot-c09cdf.netlify.app',
     },
     body: JSON.stringify({ uploadURL: uploadURL }),
   });
