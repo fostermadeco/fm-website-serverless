@@ -37,6 +37,13 @@ functions:
           path: requestUploadURL
           method: post
           cors: true
+  algoliaJournal: 
+    handler: handler.algoliaJournal
+    events: 
+      - http:
+          path: algoliaJournal
+          method: PUT
+          cors: true
   # authAccess: 
   #   handler: handler.authAccess
   #     events: 
@@ -61,7 +68,7 @@ resources:
               - POST
               - HEAD
               AllowedOrigins:
-                - "*"
+                - "https://happy-joliot-c09cdf.netlify.app"
               AllowedHeaders:
                 - "*"
     CloudFrontOriginIdentity:

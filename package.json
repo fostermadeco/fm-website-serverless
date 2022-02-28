@@ -1,5 +1,7 @@
 {
   "dependencies": {
-    "aws-sdk": "^2.1074.0"
+    "algoliasearch": "^4.12.1",
+    "aws-sdk": "^2.1074.0",
+    "contentful": "^9.1.12"
   }
 }
