@@ -22,12 +22,14 @@ frameworkVersion: '3'
 
 provider:
   name: aws
-  runtime: nodejs12.x
-  iamRoleStatements:
-    - Effect: "Allow"
-      Action:
-        - "s3:*"
-      Resource: "arn:aws:s3:::fm-website-apply-docs/*"
+  runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "s3:*"
+          Resource: "arn:aws:s3:::fm-website-apply-docs/*"
 
 functions:
   requestUploadURL:
@@ -56,7 +58,7 @@ functions:
 # you can add CloudFormation resource templates here
 resources:
   Resources:
-    MyBucket:
+    FmWebsiteApplyDocs:
         Type: AWS::S3::Bucket
         Properties:
           BucketName: fm-website-apply-docs
@@ -68,7 +70,7 @@ resources:
               - POST
               - HEAD
               AllowedOrigins:
-                - "https://happy-joliot-c09cdf.netlify.app"
+                - "https://fm-nx-website.netlify.app"
               AllowedHeaders:
                 - "*"
     CloudFrontOriginIdentity:
@@ -129,7 +131,7 @@ resources:
                 Fn::Join:
                   - ""
                   - - "arn:aws:s3:::"
-                    - Ref: MyBucket
+                    - Ref: FmWebsiteApplyDocs
                     - "/*"
         Roles:
           - fm-website-serverless-lambda

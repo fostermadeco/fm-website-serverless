@@ -14,13 +14,13 @@ module.exports.requestUploadURL = async (event, context, callback) => {
     ContentType: params.type,
     ACL: 'private',
   };
-  
+
   const uploadURL = s3.getSignedUrl('putObject', s3Params);
 
   callback(null, {
     statusCode: 200,
     headers: {
-      'Access-Control-Allow-Origin': 'https://happy-joliot-c09cdf.netlify.app',
+      'Access-Control-Allow-Origin': 'https://fm-nx-website.netlify.app',
     },
     body: JSON.stringify({ uploadURL: uploadURL }),
   });
